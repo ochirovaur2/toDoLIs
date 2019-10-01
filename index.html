@@ -222,6 +222,7 @@
       
       
       App.controller('home', function (page) {
+         function zero(){
          $(".PFromTill").animate({
                 position: "absolute",
                 visibility: 'hidden',
@@ -232,7 +233,8 @@
                 visibility: 'hidden',
                 zIndex: "-3333"}, 
                 300);
-
+  }
+   zero();
         //get item from local storage
        
 
