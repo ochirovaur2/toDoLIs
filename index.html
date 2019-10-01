@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
   <head>
     <title>To Do List</title>
@@ -11,10 +11,8 @@
       .topbarOfDaysOfWeek{
         text-align: center;
         font-size: 130%;
-
-      }
-
-      ul.colour-picker div {
+       }
+       ul.colour-picker div {
         border-radius: 5px;
         color: white;
         position: relative;
@@ -28,8 +26,7 @@
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
       }
-
-      ul.colour-picker div[data-colour="teal"] {
+       ul.colour-picker div[data-colour="teal"] {
         background: #2B9;
       }
       ul.colour-picker div[data-colour="green"] {
@@ -69,8 +66,7 @@
         height: 150px;
       }
       
-
-      .makeWidthWider{
+       .makeWidthWider{
         position: absolute;
         visibility: hidden;
         
@@ -84,8 +80,7 @@
         padding-bottom: 12px;
         
         
-
-      }
+       }
       #addTextToMonday{
         position: absolute;
         visibility: hidden;
@@ -98,8 +93,7 @@
         margin: 0; 
         border-radius: 0%;
         overflow: visible;
-
-      }
+       }
       #saveTextOfMonday{
         box-sizing: border-box;
         
@@ -144,36 +138,36 @@
     </style>
   </head>
 
-  <body>
+   <body>
     <div class="app-page" data-page="home">
       <div class="app-topbar">
         <div class="app-title">To-do list</div>
       </div>
       <div class="app-content">
-        
-        <div class="app-section" id="toDoList">
+
+         <div class="app-section" id="toDoList">
           <p class="topbarOfDaysOfWeek"><b>  &#8577;ays of week </b><br></p>
           <ul class="colour-picker">
             <div data-colour="teal" class="daysOfWeek">
               Monday
-              
-              <div id="divOfListOfMonday">
+
+               <div id="divOfListOfMonday">
                 <ul id="listOfMonday">
                     <li id="dasd">
-                  
-                      <p class="text"> Drink Coffee</p>
-                      
+
+                       <p class="text"> Drink Coffee</p>
 
 
-                      <label for="dasd"  class="labelForDeleteElementOfUl time">Delete</label>
-                      
-                    </li>
 
-                 
-                  
-                 
-                  
-                </ul>
+                       <label for="dasd"  class="labelForDeleteElementOfUl time">Delete</label>
+
+                     </li>
+
+
+
+
+
+                 </ul>
               </div>
               <div id="addTextToMonday">
                 <span id="saveTextOfMonday" name="textOfMonday" >&#10004;</span>
@@ -184,54 +178,56 @@
                 <span>To: </span>
                  <input type="time" id="timeOfMondayTo" name="textOfMonday" required>
                   <label id="deleteAll" >Delete</label>
-                
-              </div >
+
+               </div >
               <span class="makeWidthWider">&#8417;</span>
-              
-    
-            </div>
+
+
+             </div>
             <div data-colour="green" class="daysOfWeek">Tuesday</div>
             <div data-colour="yellow" class="daysOfWeek">Wednesday</div>
             <div data-colour="orange" class="daysOfWeek">Thursday</div>
             <div data-colour="red" class="daysOfWeek">Friday</div>
             <div data-colour="blue" class="daysOfWeek">Saturday</div>
             <div data-colour="dark-blue" id="sunday" class="daysOfWeek">Sunday</div>
-            
-          </ul>
+
+           </ul>
         </div>
       </div>
     </div>
 
-  
 
-    <script src="zepto.js"></script>
+
+     <script src="zepto.js"></script>
     <script src="app.min.js"></script>
-    
-    <script type="text/javascript">
+
+     <script type="text/javascript">
    
     
-
-      // Select the elements
-
+       // Select the elements
+       
       
-      
-
-      // Classes names
-
-      // add to do function
+       // Classes names
+       // add to do function
       
       
       App.controller('home', function (page) {
-         
-        //get item from local storage
+         $(".PFromTill").animate({
+                position: "absolute",
+                visibility: 'hidden',
+                zIndex: "-3333"}, 
+                300);
+            $(".close").animate({
+                position: "absolute",
+                visibility: 'hidden',
+                zIndex: "-3333"}, 
+                300);
+         //get item from local storage
        
-
-        // check if data is not empty
+         // check if data is not empty
        
-
-        // load item's from the user's interface
-
-       
+         // load item's from the user's interface
+        
         //addd item to localStorage
         var todos;
         function toLocal() {
@@ -239,8 +235,7 @@
           localStorage.setItem("todos", todos);
         }
         
-
-       $(page).find('#listOfMonday')
+        $(page).find('#listOfMonday')
           .clickable()
           .on('click', function (ev)  {
             if(ev.target.tagName === "LI") {
@@ -254,17 +249,13 @@
             }
             
         }, false);
-
+           
           
-
          
-
-        
          $(page).find('ul.colour-picker .daysOfWeek')
           .clickable()
           .on('click', function () {
-
-              
+               
                $(this).animate({
                 position: "absolute",
                 left: "50%",
@@ -295,38 +286,29 @@
                 }, 
                 300);
                $(".makeWidthWider").animate( {
-
-                  visibility:"visible",
+                   visibility:"visible",
                   transform: "rotate(-45deg)"
-
-               },300);
+                },300);
                $("#addTextToMonday").
                animate( {
-
-                  visibility:"visible"
+                   visibility:"visible"
                   
-
-               },600);
+                },600);
                $(".time").animate( {
                   position: "relative",
                   visibility:"visible",
                   
-
-               },300);
-
-                
-
-                
+                },300);
+                 
+                 
                 
             
           });
           /*
           var i = 0;
-
-          function addToDo(toDo, timeFrom,timeTill, id, trash){
+           function addToDo(toDo, timeFrom,timeTill, id, trash){
             if(trash) {return;}
-
-            const ulListOfMonday = document.getElementById("listOfMonday");
+             const ulListOfMonday = document.getElementById("listOfMonday");
             
             const item = `
                 <li>
@@ -338,13 +320,9 @@
                 </li>
                 `;
             const position = "beforeend";
-
-            ulListOfMonday.insertAdjacentHTML(position, item)
-
-
-          }
-
-          function addOnlyTextOfToDo(toDo, id,trash){ 
+             ulListOfMonday.insertAdjacentHTML(position, item)
+           }
+           function addOnlyTextOfToDo(toDo, id,trash){ 
             
             const ulListOfMonday = document.getElementById("listOfMonday");
             
@@ -357,19 +335,15 @@
                 `;
             const position = "beforeend";
             ulListOfMonday.insertAdjacentHTML(position, item)
-
-
-          }
+           }
           */
           
           
           
-
-          $(page).find('#saveTextOfMonday')
+           $(page).find('#saveTextOfMonday')
           .clickable()
           .on('click', function() {
-
-              var li = document.createElement('li');
+               var li = document.createElement('li');
               var inputValue = document.getElementById('textOfMonday').value;
               var text = document.createTextNode(inputValue);
               var p = document.createElement('p');
@@ -381,8 +355,7 @@
               li.appendChild(text);
               p.appendChild(textFrom);
               p.appendChild(textTill);
-
-              
+               
               if(inputValue && timeFrom && timeTill) {
                 document.getElementById('listOfMonday').appendChild(li);
                 
@@ -391,13 +364,11 @@
                 var textOfDeleteBTN = document.createTextNode("X");
                 document.getElementById("timeOfMondayFrom").value = "";
                 document.getElementById("timeOfMondayTo").value ="" ;
-
-                spanOfDeleteBtn.className = "close";
+                 spanOfDeleteBtn.className = "close";
                 spanOfDeleteBtn.appendChild(textOfDeleteBTN);
                 li.appendChild(spanOfDeleteBtn);
                 li.appendChild(p);
-
-              } else if(inputValue && timeFrom == "" && timeTill =="") {
+               } else if(inputValue && timeFrom == "" && timeTill =="") {
                 document.getElementById('listOfMonday').appendChild(li);
                 
                 document.getElementById('textOfMonday').value = "";
@@ -405,15 +376,12 @@
                 var textOfDeleteBTN = document.createTextNode("X");
                 document.getElementById("timeOfMondayFrom").value = "";
                 document.getElementById("timeOfMondayTo").value ="" ;
-
-                spanOfDeleteBtn.className = "close";
+                 spanOfDeleteBtn.className = "close";
                 spanOfDeleteBtn.appendChild(textOfDeleteBTN);
                 li.appendChild(spanOfDeleteBtn);
                 
               };
-
-
-              /*
+               /*
               const toDo = document.getElementById("textOfMonday").value;
               const timeFrom = document.getElementById("timeOfMondayFrom").value;
               const timeTill = document.getElementById("timeOfMondayTo").value;
@@ -427,8 +395,7 @@
               document.getElementById("textOfMonday").value = "";
               document.getElementById("timeOfMondayFrom").value = "";
               document.getElementById("timeOfMondayTo").value = "";
-
-              */
+               */
               toLocal();
           });
           //delete all 
@@ -439,8 +406,7 @@
             toLocal();
           });
           // add an itme to the list 
-
-            
+             
            $(page).find('.makeWidthWider')
           .clickable()
           .on('click', function () {
@@ -454,9 +420,7 @@
                 visibility: 'hidden',
                 zIndex: "-3333"}, 
                 300);
-
-
-            $(".daysOfWeek").animate({
+             $(".daysOfWeek").animate({
                 position: "relative",
                 left: "",
                 transform: "",
@@ -486,26 +450,20 @@
                 $(".toDoText").animate( {
                   marginTop: "0px",
                   width: "90%"
-
-               },300);
+                },300);
                  $("#addTextToMonday").
                animate( {
-
-                  visibility:"hidden"
+                   visibility:"hidden"
                   
-
-               },50);
+                },50);
                $(".time").animate( {
                   position: "absolute",
                   visibility:"hidden",
                   
-
-               },300);
+                },300);
                
-
-            
-
-          });
+             
+           });
           
           // add text
           $(page).find('.addText')
@@ -543,27 +501,12 @@
               
             });
            
-
-       });
+        });
       
       if(localStorage.getItem("todos")){
-        document.getElementById('listOfMonday').innerHTML = localStorage.getItem("todos")
-        
-         $(".PFromTill").animate({
-                position: "absolute",
-                visibility: 'hidden',
-                zIndex: "-3333"}, 
-                300);
-            $(".close").animate({
-                position: "absolute",
-                visibility: 'hidden',
-                zIndex: "-3333"}, 
-                300);
-};
- 
-
-
-/*
+        document.getElementById('listOfMonday').innerHTML = localStorage.getItem("todos");
+      }
+ /*
         $(page).find('ul.colour-picker li')
           .clickable()
           .on('click', function () {
@@ -585,8 +528,7 @@
       App.controller('page2', function (page) {
         // put stuff here
       });
-
-      try {
+       try {
         App.restore();
       } catch (err) {
         App.load('home');
